@@ -1,10 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
+import { StoreModule} from '@ngrx/store';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CountersComponent } from './components/counters/counters.component';
 import { CounterComponent } from './components/counter/counter.component';
-xdescribe('AppComponent', () => {
+import { countersReducer } from './store';
+
+describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -13,6 +17,9 @@ xdescribe('AppComponent', () => {
         FooterComponent,
         CountersComponent,
         CounterComponent
+      ],
+      imports: [
+        StoreModule.forRoot({ counters: countersReducer })
       ]
     }).compileComponents();
   }));
