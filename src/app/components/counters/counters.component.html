@@ -1,0 +1,7 @@
+<div>
+  <h1>Counters</h1>
+  <div class="counter-container">
+    <app-counter *ngFor="let counter of (counters | async); let i = index" [index]="i" class="rounded"></app-counter>
+    <div class="add-counter rounded" (click)="addCounter()"><span class="fa fa-plus"></span></div>
+  </div>
+</div>

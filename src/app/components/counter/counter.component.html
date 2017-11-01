@@ -1,0 +1,11 @@
+<div>
+  <button type="button" class="close" aria-label="Close" (click)="removeCounter()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div><h1>{{(counters | async)[index]}}</h1></div>
+  <div>
+    <button (click)="increment()"><span class="fa fa-plus"></span></button>
+    <button (click)="decrement()"><span class="fa fa-minus"></span></button>
+    <button (click)="reset()"><span class="fa fa-refresh"></span></button>
+  </div>
+</div>
