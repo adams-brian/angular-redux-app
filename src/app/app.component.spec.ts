@@ -1,5 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
-import { StoreModule} from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';

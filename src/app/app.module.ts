@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StoreModule} from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { CountersComponent } from './components/counters/counters.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'users/:id',
     component: UserComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '',
@@ -41,7 +46,8 @@ const routes: Routes = [
     CounterComponent,
     CountersComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
