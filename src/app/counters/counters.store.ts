@@ -1,4 +1,6 @@
-import { Action } from '@ngrx/store';
+import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { AppState } from '../app.store';
 
 abstract class ActionWithNumberPayload implements Action {
   readonly type: string;
@@ -26,9 +28,18 @@ export class RemoveCounter extends ActionWithNumberPayload {
   readonly type = REMOVE_COUNTER;
 }
 
-export interface AppState {
-    counters: Array<number>;
+export interface CountersState {
+  counters: Array<number>;
 }
+
+export interface AppState extends AppState {
+  counters: CountersState;
+}
+
+const getCountersState = createFeatureSelector<CountersState>('counters');
+
+export const getCounters = createSelector(getCountersState,
+  (state: CountersState) => state.counters);
 
 export function countersReducer(state: Array<number> = [], action: ActionWithNumberPayload) {
   const index = action.payload;

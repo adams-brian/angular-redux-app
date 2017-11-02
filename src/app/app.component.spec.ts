@@ -1,25 +1,30 @@
 import { TestBed, async } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 
+import { AppRoutingModule } from './app-routing.module';
+
+import { CountersModule } from './counters/counters.module';
+import { UsersModule } from './users/users.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/nav/nav.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { CountersComponent } from './components/counters/counters.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { countersReducer } from './store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        NavComponent,
-        FooterComponent,
-        CountersComponent,
-        CounterComponent
+        AppComponent
       ],
       imports: [
-        StoreModule.forRoot({ counters: countersReducer })
+        CountersModule,
+        UsersModule,
+        SharedModule,
+        AppRoutingModule,
+        StoreModule.forRoot({})
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' }
       ]
     }).compileComponents();
   }));

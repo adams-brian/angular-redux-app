@@ -5,31 +5,23 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { CountersModule } from './counters/counters.module';
+import { UsersModule } from './users/users.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { UsersComponent } from './components/users/users.component';
-import { UserComponent } from './components/user/user.component';
-import { countersReducer } from './store';
-import { CounterComponent } from './components/counter/counter.component';
-import { CountersComponent } from './components/counters/counters.component';
-import { NavComponent } from './components/nav/nav.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UsersComponent,
-    UserComponent,
-    CounterComponent,
-    CountersComponent,
-    NavComponent,
-    FooterComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    CountersModule,
+    UsersModule,
+    SharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({ counters: countersReducer }),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 50
     })

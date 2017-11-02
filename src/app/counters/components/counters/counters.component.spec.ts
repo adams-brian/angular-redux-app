@@ -1,13 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { StoreModule, Store } from '@ngrx/store';
 
 import { CountersComponent } from './counters.component';
 import { CounterComponent } from '../counter/counter.component';
-import { countersReducer, AppState, AddCounter, RemoveCounter } from '../../store';
+import { countersReducer, AppState, AddCounter, RemoveCounter } from '../../counters.store';
 
-fdescribe('CountersComponent', () => {
+describe('CountersComponent', () => {
   let component: CountersComponent;
   let fixture: ComponentFixture<CountersComponent>;
   let store: Store<AppState>;
@@ -23,10 +24,11 @@ fdescribe('CountersComponent', () => {
         CounterComponent
       ],
       imports: [
-        StoreModule.forRoot(
-          { counters: countersReducer },
+        CommonModule,
+        StoreModule.forFeature('counters', { counters: countersReducer },
           { initialState: initialState }
-        )
+        ),
+        StoreModule.forRoot({})
       ]
     })
     .compileComponents();

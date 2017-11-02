@@ -4,7 +4,7 @@ import { DebugElement } from '@angular/core';
 import { StoreModule, Store } from '@ngrx/store';
 
 import { CounterComponent } from './counter.component';
-import { countersReducer, AppState, Increment, Decrement, Reset, RemoveCounter } from '../../store';
+import { countersReducer, AppState, Increment, Decrement, Reset, RemoveCounter } from '../../counters.store';
 
 describe('CounterComponent', () => {
   let component: CounterComponent;
@@ -21,10 +21,10 @@ describe('CounterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CounterComponent ],
       imports: [
-        StoreModule.forRoot(
-          { counters: countersReducer },
+        StoreModule.forFeature('counters', { counters: countersReducer },
           { initialState: initialState }
-        )
+        ),
+        StoreModule.forRoot({})
       ]
     })
     .compileComponents();
