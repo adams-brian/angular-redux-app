@@ -31,7 +31,6 @@ export interface AppState {
 }
 
 export function countersReducer(state: Array<number> = [], action: ActionWithNumberPayload) {
-  console.log('in counterReducer');
   const index = action.payload;
   switch (action.type) {
     case INCREMENT:

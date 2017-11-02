@@ -1,3 +1,8 @@
+.counters-container {
+    text-align: center;
+    padding: 1rem;
+}
+
 .add-counter, app-counter {
     margin: 1rem;
     width: 8rem;
