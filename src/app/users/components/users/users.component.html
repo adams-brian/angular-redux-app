@@ -1,3 +1,5 @@
-<p>
-  users works!
-</p>
+<h1>Users</h1>
+<div *ngFor="let user of users" [routerLink]="['/users', user._id]">
+  <h4>{{user.firstname}} {{user.lastname}}</h4>
+  <button (click)="deleteUser(user._id)">Delete</button>
+</div>
