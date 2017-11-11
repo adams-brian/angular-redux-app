@@ -6,26 +6,29 @@ abstract class ActionWithNumberPayload implements Action {
   readonly type: string;
   constructor(public payload: number) {}
 }
-const INCREMENT = 'INCREMENT';
+export const INCREMENT = '[Counters] INCREMENT';
 export class Increment extends ActionWithNumberPayload {
   readonly type = INCREMENT;
 }
-const DECREMENT = 'DECREMENT';
+export const DECREMENT = '[Counters] DECREMENT';
 export class Decrement extends ActionWithNumberPayload {
   readonly type = DECREMENT;
 }
-const RESET = 'RESET';
+export const RESET = '[Counters] RESET';
 export class Reset extends ActionWithNumberPayload {
   readonly type = RESET;
 }
-const ADD_COUNTER = 'ADD COUNTER';
+export const ADD_COUNTER = '[Counters] ADD COUNTER';
 export class AddCounter implements Action {
   readonly type = ADD_COUNTER;
-  constructor() { }
 }
-const REMOVE_COUNTER = 'REMOVE COUNTER';
+export const REMOVE_COUNTER = '[Counters] REMOVE COUNTER';
 export class RemoveCounter extends ActionWithNumberPayload {
   readonly type = REMOVE_COUNTER;
+}
+export const LOAD_COUNTERS = '[Counters] LOAD COUNTERS';
+export class LoadCounters implements Action {
+  readonly type = LOAD_COUNTERS;
 }
 
 export interface CountersState {

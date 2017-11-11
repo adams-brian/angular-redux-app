@@ -18,8 +18,7 @@ export class CounterService {
   }
 
   post(counters: CountersState) {
-    return this.http.post(this.url + '/counters', counters)
-      .map(res => res.json());
+    return this.http.post(this.url + '/counters', counters);
   }
 
 }
