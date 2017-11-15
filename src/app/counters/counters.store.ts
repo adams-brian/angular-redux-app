@@ -26,10 +26,13 @@ export const REMOVE_COUNTER = '[Counters] REMOVE COUNTER';
 export class RemoveCounter extends ActionWithNumberPayload {
   readonly type = REMOVE_COUNTER;
 }
-export const LOAD_COUNTERS = '[Counters] LOAD COUNTERS';
-export class LoadCounters implements Action {
-  readonly type = LOAD_COUNTERS;
+export const COUNTERS_UPDATED = '[Counters] COUNTERS UPDATED';
+export class CountersUpdated implements Action {
+  readonly type = COUNTERS_UPDATED;
+  constructor(public payload: number[]) {}
 }
+
+type CounterAction = Increment | Decrement | Reset | AddCounter | RemoveCounter | CountersUpdated;
 
 export interface CountersState {
   counters: Array<number>;
@@ -44,34 +47,35 @@ const getCountersState = createFeatureSelector<CountersState>('counters');
 export const getCounters = createSelector(getCountersState,
   (state: CountersState) => state.counters);
 
-export function countersReducer(state: Array<number> = [], action: ActionWithNumberPayload) {
-  const index = action.payload;
+export function countersReducer(state: Array<number> = [], action: CounterAction) {
   switch (action.type) {
     case INCREMENT:
       return [
-        ...state.slice(0, index),
-        state[index] + 1,
-        ...state.slice(index + 1)
+        ...state.slice(0, action.payload),
+        state[action.payload] + 1,
+        ...state.slice(action.payload + 1)
       ];
     case DECREMENT:
       return [
-        ...state.slice(0, index),
-        state[index] - 1,
-        ...state.slice(index + 1)
+        ...state.slice(0, action.payload),
+        state[action.payload] - 1,
+        ...state.slice(action.payload + 1)
       ];
     case RESET:
       return [
-        ...state.slice(0, index),
+        ...state.slice(0, action.payload),
         0,
-        ...state.slice(index + 1)
+        ...state.slice(action.payload + 1)
       ];
     case ADD_COUNTER:
       return [...state, 0];
     case REMOVE_COUNTER:
       return [
-        ...state.slice(0, index),
-        ...state.slice(index + 1)
+        ...state.slice(0, action.payload),
+        ...state.slice(action.payload + 1)
       ];
+    case COUNTERS_UPDATED:
+      return [...action.payload];
     default:
       return state;
   }
