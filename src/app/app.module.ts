@@ -13,6 +13,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 
+import { loadingReducer } from './app.store';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +25,7 @@ import { AppComponent } from './app.component';
     UsersModule,
     SharedModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({loading: loadingReducer}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({

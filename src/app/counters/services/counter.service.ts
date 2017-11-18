@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { CountersState } from '../counters.store';
@@ -12,7 +13,7 @@ export class CounterService {
     this.url = 'http://localhost:3000';
    }
 
-  get() {
+  get(): Observable<number[]> {
     return this.http.get(this.url + '/counters')
       .map(res => res.json().data);
   }

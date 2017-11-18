@@ -21,15 +21,15 @@ export class CountersEffects {
 
   constructor(private actions: Actions, private store: Store<AppState>, private counterService: CounterService) { }
 
-  @Effect() navigateToCounters = this.actions.ofType(ROUTER_NAVIGATION)
-    .map((r: RouterNavigationAction) => r.payload.routerState.root.firstChild)
-    .filter(val => val.routeConfig.path === 'counters')
-    .do((v) => console.log('got navigation action, loading counters'))
-    .switchMap((r: ActivatedRouteSnapshot) => this.counterService.get().map(val => new CountersUpdated(val)))
-    .catch( e => {
-      console.log('Network error', e);
-      return Observable.of();
-    });
+  // @Effect() navigateToCounters = this.actions.ofType(ROUTER_NAVIGATION)
+  //   .map((r: RouterNavigationAction) => r.payload.routerState.root.firstChild)
+  //   .filter(val => val.routeConfig.path === 'counters')
+  //   .do((v) => console.log('got navigation action, loading counters'))
+  //   .switchMap((r: ActivatedRouteSnapshot) => this.counterService.get().map(val => new CountersUpdated(val)))
+  //   .catch( e => {
+  //     console.log('Network error', e);
+  //     return Observable.of();
+  //   });
 
   @Effect() saveCounters = this.actions
     .ofType(INCREMENT, DECREMENT, RESET, ADD_COUNTER, REMOVE_COUNTER)
