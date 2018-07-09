@@ -1,10 +1,16 @@
 # angular-redux-app
 
+This is a simple app to explore patterns and best practices using Angular and Redux.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
-## Development server
+## Dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This application depends on a locally running instance of the API server found here: [express-mongo-api](https://github.com/brian-lives-outdoors/express-mongo-api)
+
+## Running the application
+
+Run `npm install` to install all dependencies, then `npm start` to start the application running on `http://localost:4200`
 
 ## Code scaffolding
 
